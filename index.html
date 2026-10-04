@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Motivation Hub</title>
+
+<style>
+
+/* =========================
+   BASIC SETTINGS
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(5,10,20,0.88),
+            rgba(5,10,20,0.95)
+        ),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    text-align: center;
+
+    padding: 55px 20px 45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,158,11,0.25),
+            rgba(15,23,42,0.5)
+        );
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.15);
+}
+
+header h1 {
+
+    font-size: 42px;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 5px 20px black;
+}
+
+header p {
+
+    font-size: 17px;
+
+    color: #dbeafe;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 10;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    padding: 13px;
+
+    background:
+        rgba(2,6,23,0.90);
+
+    backdrop-filter: blur(12px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.1);
+}
+
+nav button {
+
+    border: none;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    background: #1e293b;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+nav button:hover {
+
+    background: #f59e0b;
+
+    color: black;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+
+    width: 92%;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search {
+
+    margin: 30px auto;
+
+    text-align: center;
+}
+
+.search input {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    padding: 16px 22px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 30px;
+
+    font-size: 16px;
+
+    background:
+        rgba(255,255,255,0.95);
+
+    color: #111827;
+}
+
+
+/* =========================
+   HERO QUOTE
+========================= */
+
+.hero {
+
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 330px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 35px;
+
+    margin-bottom: 40px;
+
+    border-radius: 28px;
+
+    background:
+
+        linear-gradient(
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.75)
+        ),
+
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80");
+
+    background-size: cover;
+
+    background-position: center;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45);
+}
+
+.hero-content {
+
+    max-width: 750px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.hero h2 {
+
+    color: #fbbf24;
+
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+#randomQuote {
+
+    font-size: 29px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+#randomAuthor {
+
+    margin-top: 18px;
+
+    color: #fde68a;
+
+    font-size: 18px;
+}
+
+.newQuote {
+
+    margin-top: 25px;
+
+    padding: 14px 25px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #f59e0b;
+
+    color: black;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.newQuote:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title {
+
+    text-align: center;
+
+    margin: 30px 0;
+
+    font-size: 28px;
+}
+
+
+/* =========================
+   QUOTE GRID
+========================= */
+
+.quotes {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 22px;
+
+    padding-bottom: 50px;
+}
+
+
+/* =========================
+   QUOTE CARD
+========================= */
+
+.card {
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,41,59,0.96),
+            rgba(15,23,42,0.96)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.3);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-7px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.5);
+}
+
+
+/* quote image */
+
+.card-image {
+
+    height: 150px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    position: relative;
+}
+
+.card-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.7)
+        );
+}
+
+
+.card-content {
+
+    padding: 22px;
+}
+
+
+.category {
+
+    display: inline-block;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    background: #334155;
+
+    color: #fbbf24;
+
+    font-size: 12px;
+
+    margin-bottom: 14px;
+}
+
+
+.quote-text {
+
+    font-size: 18px;
+
+    line-height: 1.55;
+
+    margin-bottom: 14px;
+}
+
+
+.author {
+
+    color: #fbbf24;
+
+    margin-bottom: 18px;
+}
+
+
+/* buttons */
+
+.actions {
+
+    display: flex;
+
+    gap: 8px;
+}
+
+.actions button {
+
+    flex: 1;
+
+    border: none;
+
+    padding: 9px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.favorite {
+
+    background: #f59e0b;
+}
+
+.share {
+
+    background: #38bdf8;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background: #020617;
+
+    color: #94a3b8;
+
+    line-height: 2;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    header h1 {
+
+        font-size: 31px;
+    }
+
+    #randomQuote {
+
+        font-size: 22px;
+    }
+
+    .hero {
+
+        min-height: 360px;
+
+        padding: 25px 18px;
+    }
+
+    .quotes {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>🔥 Motivation Hub</h1>
+
+<p>
+Train Your Mind. Build Your Future.
+</p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button onclick="showAll()">All</button>
+
+<button onclick="filterQuotes('Success')">
+🚀 Success
+</button>
+
+<button onclick="filterQuotes('Discipline')">
+💪 Discipline
+</button>
+
+<button onclick="filterQuotes('Study')">
+📚 Study
+</button>
+
+<button onclick="filterQuotes('Mindset')">
+🧠 Mindset
+</button>
+
+<button onclick="filterQuotes('Life')">
+🌱 Life
+</button>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="🔍 Search quotes..."
+onkeyup="searchQuotes()">
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h2>✨ DAILY MOTIVATION</h2>
+
+<p id="randomQuote">
+"Believe you can and you're halfway there."
+</p>
+
+<p id="randomAuthor">
+— Theodore Roosevelt
+</p>
+
+<button
+class="newQuote"
+onclick="newQuote()">
+
+🔄 New Quote
+
+</button>
+
+</div>
+
+</section>
+
+
+<h2 class="section-title">
+💬 Inspirational Quotes
+</h2>
+
+
+<!-- QUOTES -->
+
+<div
+class="quotes"
+id="quotesContainer">
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+🔥 Motivation Hub
+</p>
+
+<p>
+Patience + Discipline + Hard Work + Consistency = Success
+</p>
+
+<p>
+Keep going. Your future self will thank you.
+</p>
+
+</footer>
+
+
+<script>
+
+
+/* =========================
+   IMAGE COLLECTION
+========================= */
+
+const images = [
+
+"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
+
+"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+
+"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80",
+
+"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80",
+
+"https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=800&q=80",
+
+"https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80"
+
+];
+
+
+/* =========================
+   120+ QUOTES
+========================= */
+
+const quotes = [
+
+["Believe you can and you're halfway there.","Theodore Roosevelt","Mindset"],
+
+["Success is not final, failure is not fatal.","Winston Churchill","Success"],
+
+["The secret of getting ahead is getting started.","Mark Twain","Success"],
+
+["Don't wish for it. Work for it.","Unknown","Discipline"],
+
+["Great things never come from comfort zones.","Unknown","Mindset"],
+
+["Small progress is still progress.","Unknown","Mindset"],
+
+["Dream big. Work hard. Stay focused.","Unknown","Success"],
+
+["Every expert was once a beginner.","Unknown","Study"],
+
+["Don't stop until you're proud.","Unknown","Success"],
+
+["Your future depends on what you do today.","Unknown","Life"],
+
+["Discipline creates freedom.","Unknown","Discipline"],
+
+["Consistency beats motivation.","Unknown","Discipline"],
+
+["Your only limit is your mind.","Unknown","Mindset"],
+
+["Stay patient. Stay focused. Keep going.","Unknown","Mindset"],
+
+["Make yourself proud.","Unknown","Life"],
+
+["One day or day one. You decide.","Unknown","Success"],
+
+["Focus on progress, not perfection.","Unknown","Mindset"],
+
+["Hard work beats talent when talent doesn't work hard.","Unknown","Success"],
+
+["Your effort today builds your tomorrow.","Unknown","Discipline"],
+
+["Study today. Build your future tomorrow.","Unknown","Study"],
+
+["A little progress every day adds up.","Unknown","Discipline"],
+
+["Your dreams require your discipline.","Unknown","Discipline"],
+
+["Difficult roads often lead to beautiful destinations.","Unknown","Life"],
+
+["Never give up on yourself.","Unknown","Mindset"],
+
+["Believe in your journey.","Unknown","Life"],
+
+["Work quietly and let your results speak.","Unknown","Success"],
+
+["Success begins with self-belief.","Unknown","Success"],
+
+["Be stronger than your excuses.","Unknown","Discipline"],
+
+["Your mindset determines your direction.","Unknown","Mindset"],
+
+["Turn your obstacles into opportunities.","Unknown","Mindset"],
+
+["Don't compare your chapter one to someone else's chapter twenty.","Unknown","Life"],
+
+["You are capable of more than you think.","Unknown","Mindset"],
+
+["Wake up with determination. Sleep with satisfaction.","Unknown","Discipline"],
+
+["Action is the foundation of success.","Unknown","Success"],
+
+["You don't need motivation every day. You need discipline.","Unknown","Discipline"],
+
+["Keep going even when nobody is watching.","Unknown","Discipline"],
+
+["The future belongs to those who prepare today.","Unknown","Study"],
+
+["Learn something new every day.","Unknown","Study"],
+
+["Your education is an investment in yourself.","Unknown","Study"],
+
+["Never stop learning.","Unknown","Study"],
+
+["Knowledge gives you power.","Unknown","Study"],
+
+["A focused mind can achieve great things.","Unknown","Mindset"],
+
+["Don't let fear decide your future.","Unknown","Mindset"],
+
+["Be consistent even when progress is slow.","Unknown","Discipline"],
+
+["Success takes time. Keep building.","Unknown","Success"],
+
+["Your habits create your future.","Unknown","Discipline"],
+
+["Small habits create big results.","Unknown","Discipline"],
+
+["The best investment is in yourself.","Unknown","Life"],
+
+["Don't wait for opportunity. Create it.","Unknown","Success"],
+
+["Your future self is watching what you do today.","Unknown","Discipline"],
+
+["Turn your pain into power.","Unknown","Mindset"],
+
+["Your struggles are making you stronger.","Unknown","Life"],
+
+["Fall seven times. Stand up eight.","Unknown","Mindset"],
+
+["Failure is feedback, not the end.","Unknown","Success"],
+
+["Every failure teaches you something.","Unknown","Mindset"],
+
+["Keep moving forward.","Unknown","Life"],
+
+["You are one decision away from a different life.","Unknown","Life"],
+
+["Start where you are. Use what you have.","Unknown","Success"],
+
+["Do what others won't today.","Unknown","Discipline"],
+
+["Sacrifice today for a better tomorrow.","Unknown","Discipline"],
+
+["Your goals deserve your effort.","Unknown","Success"],
+
+["Focus on what you can control.","Unknown","Mindset"],
+
+["Don't let temporary problems become permanent doubts.","Unknown","Mindset"],
+
+["Progress requires patience.","Unknown","Discipline"],
+
+["Success is built one day at a time.","Unknown","Success"],
+
+["Dreams don't work unless you do.","Unknown","Success"],
+
+["Believe in yourself even when others don't.","Unknown","Mindset"],
+
+["Be your own competition.","Unknown","Mindset"],
+
+["Compete with who you were yesterday.","Unknown","Mindset"],
+
+["Your potential is greater than your fear.","Unknown","Mindset"],
+
+["Stay hungry. Stay focused.","Unknown","Success"],
+
+["Your time will come. Keep preparing.","Unknown","Study"],
+
+["Preparation creates confidence.","Unknown","Study"],
+
+["Don't study to pass. Study to understand.","Unknown","Study"],
+
+["Every hour you invest in learning matters.","Unknown","Study"],
+
+["Your grades are temporary. Your knowledge stays.","Unknown","Study"],
+
+["Consistency is the key to mastery.","Unknown","Study"],
+
+["Learn today. Lead tomorrow.","Unknown","Study"],
+
+["Knowledge compounds like money.","Unknown","Study"],
+
+["The more you learn, the more you grow.","Unknown","Study"],
+
+["Never be afraid to start small.","Unknown","Success"],
+
+["Start before you're ready.","Unknown","Success"],
+
+["Progress starts with one step.","Unknown","Life"],
+
+["Take the first step.","Unknown","Success"],
+
+["Don't quit during the hard part.","Unknown","Discipline"],
+
+["The hard days build strong people.","Unknown","Discipline"],
+
+["Strength comes from challenges.","Unknown","Life"],
+
+["You become what you repeatedly do.","Unknown","Discipline"],
+
+["Your routine shapes your results.","Unknown","Discipline"],
+
+["Build habits that build you.","Unknown","Discipline"],
+
+["Discipline is choosing your future over your comfort.","Unknown","Discipline"],
+
+["Comfort can become the enemy of growth.","Unknown","Mindset"],
+
+["Growth begins outside your comfort zone.","Unknown","Mindset"],
+
+["Challenge yourself every day.","Unknown","Mindset"],
+
+["Don't fear difficult things. Learn from them.","Unknown","Mindset"],
+
+["Your attitude determines your altitude.","Unknown","Mindset"],
+
+["Positive thinking creates positive action.","Unknown","Mindset"],
+
+["Protect your peace and pursue your goals.","Unknown","Life"],
+
+["Your journey doesn't have to look like anyone else's.","Unknown","Life"],
+
+["Take your time. Keep moving.","Unknown","Life"],
+
+["Life rewards those who keep trying.","Unknown","Life"],
+
+["Be grateful for how far you've come.","Unknown","Life"],
+
+["Don't forget to enjoy the journey.","Unknown","Life"],
+
+["Your story is still being written.","Unknown","Life"],
+
+["Make every day count.","Unknown","Life"],
+
+["Today is another chance to improve.","Unknown","Life"],
+
+["Tomorrow starts with today's actions.","Unknown","Life"],
+
+["Success requires patience.","Unknown","Success"],
+
+["Success requires sacrifice.","Unknown","Success"],
+
+["Success requires consistency.","Unknown","Success"],
+
+["Success starts with a decision.","Unknown","Success"],
+
+["Success is earned, not given.","Unknown","Success"],
+
+["Stay focused on your destination.","Unknown","Success"],
+
+["Keep your eyes on the goal.","Unknown","Success"],
+
+["Don't let distractions steal your dreams.","Unknown","Success"],
+
+["Your goal is worth the struggle.","Unknown","Success"],
+
+["Work until your dream becomes your reality.","Unknown","Success"],
+
+["Be disciplined when nobody is watching.","Unknown","Discipline"],
+
+["Do the work even when you don't feel like it.","Unknown","Discipline"],
+
+["Consistency turns ordinary effort into extraordinary results.","Unknown","Discipline"],
+
+["Your discipline today creates your freedom tomorrow.","Unknown","Discipline"],
+
+["Control your habits before they control you.","Unknown","Discipline"],
+
+["Master yourself before trying to master the world.","Unknown","Discipline"],
+
+["A strong mind creates a strong life.","Unknown","Mindset"],
+
+["Believe. Act. Improve. Repeat.","Unknown","Mindset"],
+
+["Think bigger. Work harder.","Unknown","Mindset"],
+
+["Your thoughts shape your actions.","Unknown","Mindset"],
+
+["Choose growth over comfort.","Unknown","Mindset"],
+
+["Choose courage over fear.","Unknown","Mindset"],
+
+["Choose progress over perfection.","Unknown","Mindset"],
+
+["Choose discipline over excuses.","Unknown","Mindset"],
+
+["Choose your future.","Unknown","Mindset"],
+
+["Never stop becoming better.","Unknown","Mindset"]
+
+];
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+function displayQuotes(list) {
+
+    const container =
+        document.getElementById("quotesContainer");
+
+    container.innerHTML = "";
+
+    list.forEach(function(q, index) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "card";
+
+        const image =
+            images[index % images.length];
+
+        card.innerHTML = `
+
+            <div
+                class="card-image"
+                style="background-image:url('${image}')">
+            </div>
+
+            <div class="card-content">
+
+                <span class="category">
+                    ${q[2]}
+                </span>
+
+                <p class="quote-text">
+                    "${q[0]}"
+                </p>
+
+                <p class="author">
+                    — ${q[1]}
+                </p>
+
+                <div class="actions">
+
+                    <button
+                        class="favorite"
+                        onclick="favoriteQuote('${q[0]}')">
+
+                        ⭐ Favorite
+
+                    </button>
+
+                    <button
+                        class="share"
+                        onclick="shareQuote('${q[0]}','${q[1]}')">
+
+                        📤 Share
+
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   ALL
+========================= */
+
+function showAll() {
+
+    displayQuotes(quotes);
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+function filterQuotes(category) {
+
+    const result =
+        quotes.filter(function(q) {
+
+            return q[2] === category;
+
+        });
+
+    displayQuotes(result);
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchQuotes() {
+
+    const value =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const result =
+        quotes.filter(function(q) {
+
+            return (
+
+                q[0].toLowerCase()
+                .includes(value)
+
+                ||
+
+                q[1].toLowerCase()
+                .includes(value)
+
+                ||
+
+                q[2].toLowerCase()
+                .includes(value)
+
+            );
+
+        });
+
+    displayQuotes(result);
+
+}
+
+
+/* =========================
+   RANDOM
+========================= */
+
+function newQuote() {
+
+    const index =
+        Math.floor(
+            Math.random() * quotes.length
+        );
+
+    document.getElementById("randomQuote")
+        .innerText =
+        '"' + quotes[index][0] + '"';
+
+    document.getElementById("randomAuthor")
+        .innerText =
+        "— " + quotes[index][1];
+
+}
+
+
+/* =========================
+   FAVORITE
+========================= */
+
+function favoriteQuote(text) {
+
+    alert(
+        "⭐ Favorite saved!\n\n" + text
+    );
+
+}
+
+
+/* =========================
+   SHARE
+========================= */
+
+function shareQuote(text, author) {
+
+    const message =
+        '"' + text + '" — ' + author;
+
+    if (navigator.share) {
+
+        navigator.share({
+
+            title: "Motivation Hub",
+
+            text: message
+
+        });
+
+    } else {
+
+        alert(message);
+
+    }
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+showAll();
+
+</script>
+
+
+</
